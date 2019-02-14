@@ -27,12 +27,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        let jsonUrlString = "https://api.letsbuildthatapp.com/jsondecodable/course"
+        let jsonUrlString = "https://api.letsbuildthatapp.com/jsondecodable/courses"
         guard let url = URL(string: jsonUrlString) else { return }
        
         URLSession.shared.dataTask(with: url) { (data, response, err) in
-//
-//
 
             guard let data = data else { return }
             
@@ -40,8 +38,8 @@ class ViewController: UIViewController {
 //            print(dataAsString)
             
             do {
-                let course = try JSONDecoder().decode(Course.self, from: data)
-                print(course.name)
+                let courses = try JSONDecoder().decode(Course.self, from: data)
+                print(courses.name)
                 
 //  2/3/objC
 //                guard let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] else { return }
@@ -54,9 +52,6 @@ class ViewController: UIViewController {
             }
             
             }.resume()
-       
     }
-
-
 }
 
